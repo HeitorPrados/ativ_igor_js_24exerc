@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var alunos = [
+    { idade: 15, altura: 1.65 },
+    { idade: 16, altura: 1.72 },
+    { idade: 17, altura: 1.80 },
+    { idade: 14, altura: 1.55 },
+    { idade: 18, altura: 1.85 },
+    { idade: 16, altura: 1.68 },
+    { idade: 17, altura: 1.75 },
+    { idade: 15, altura: 1.60 },
+    { idade: 16, altura: 1.70 },
+    { idade: 14, altura: 1.58 },
+    { idade: 18, altura: 1.78 },
+    { idade: 17, altura: 1.82 },
+    { idade: 16, altura: 1.69 },
+    { idade: 15, altura: 1.64 },
+    { idade: 14, altura: 1.57 },
+    { idade: 16, altura: 1.73 },
+    { idade: 17, altura: 1.77 },
+    { idade: 18, altura: 1.79 },
+    { idade: 15, altura: 1.62 },
+    { idade: 14, altura: 1.56 },
+    { idade: 16, altura: 1.71 },
+    { idade: 17, altura: 1.74 },
+    { idade: 15, altura: 1.63 },
+    { idade: 18, altura: 1.81 },
+    { idade: 16, altura: 1.67 },
+    { idade: 17, altura: 1.76 },
+    { idade: 15, altura: 1.61 },
+    { idade: 18, altura: 1.83 },
+    { idade: 14, altura: 1.59 },
+    { idade: 16, altura: 1.66 }
+];
+
+        var totalAltura = alunos.reduce((a,aluno)=> a + aluno.altura, 0);
+        var media = totalAltura / alunos.length;
+
+        contar = 0
+        for(i = 0; i < alunos.length; i++){
+            if (alunos[i].idade > 13 && alunos[i].altura < media){
+                contar++;
+            }
+        }
+
+        alert(`Existem ${contar} aluno com mais de 13 anos com a altura abaixo da média`)
+    </script>
+</body>
+</html>
