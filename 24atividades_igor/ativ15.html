@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var notas = [];
+        var soma = 0;
+        var contar = 0;
+        var acimaMedia = 0;
+        var abaixoSete = 0;
+
+        for (var i = 0; true; i++) {
+            var nota = parseFloat(prompt("Digite aqui a sua nota ou -1 para encerrar:"));
+
+            if (nota === -1) {
+                break;
+            }
+
+            notas.push(nota);
+            soma += nota;
+            contar++;
+        }
+
+        alert(`Quantidade de Valores Lidos: ${contar}`);
+
+        alert(`Valores Informados: ${notas.join(', ')}`);
+
+        alert(`Valores na Ordem Reversa:\n${notas.slice().reverse().join("\n")}`);
+        
+        alert(`A Soma dos valores é: ${soma}`);
+
+        var media = soma / contar;
+        alert(`A Média dos valores é: ${media.toFixed(2)}`);
+
+        for (var i = 0; i < notas.length; i++) {
+            if (notas[i] > media) {
+                acimaMedia++;
+            }
+
+            if (notas[i] < 7) {
+                abaixoSete++;
+            }
+        }
+
+        alert("Quantidade de valores acima da média: " + acimaMedia);
+        alert("Quantidade de valores abaixo de 7: " + abaixoSete);
+        alert("Fim do Programa :D");
+    </script>
+</body>
+</html>

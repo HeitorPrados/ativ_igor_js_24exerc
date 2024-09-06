@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-BR" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let meses = ['janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', 'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro'];
+        let media = [];
+
+        for (let i = 0; i < 12; i++) {
+            let temp = parseFloat(prompt(`Digite a temperatura do mês de ${meses[i]}:`));
+            media.push(temp);
+        }
+
+        let mediaAnual = media.reduce((a, b) => a + b, 0);
+        let mesMedia = mediaAnual / 12;
+
+        alert(`Meses com a temperatura acima da média anual:`);
+        for (let i = 0; i < 12; i++) {
+            if (media[i] > mesMedia) {
+                alert(`${meses[i]}: ${media[i].toFixed(2)}°C`);
+            }
+        }
+    
+    </script>
+</body>
+</html>
