@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let medias = [];
+        let media7mais = 0;
+        for (i = 0; i < 10; i++) {
+            let soma = 0;
+            for (i2 = 0; i2 < 4; i2++) {
+                let num = parseFloat(prompt(`Informe a nota ${i2+1} do estudante ${i+1}: `))
+                soma += num;
+
+            } 
+            media = (soma / 4).toFixed(2);
+            medias.push(media);
+        }
+
+        for (item of medias) {
+            if (item >= 7) {
+                media7mais++
+            }
+        }
+
+        alert(`Medias maior ou igual a 7: ${media7mais} \n Valor das medias foram: ${medias}`)
+
+    </script>
+</body>
+</html>
