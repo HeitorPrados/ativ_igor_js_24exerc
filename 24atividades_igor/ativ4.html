@@ -1,22 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
-
-<script>
-
-    var lista = [81,27,36,4,5]
-    lista.reverse()
-        for (posicao in lista){
-            alert (lista[posicao])
-        }
-   
-</script>
-
-
+    <title>Document</title>
 </head>
 <body>
+    <script>
+        let lista = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j"];
+        let vogais = ["a", "e", "i", "o", "u"];
+        let contagem = 0
+        let consoantes = []
+
+        for (item of lista) {
+            if (vogais.includes(item) == false) {
+                contagem++;
+                consoantes.push(item)
+            }
+        }
+
+        alert(`Quantidade de consoantes: ${contagem} \n Consoantes: ${consoantes}`)
+    </script>
 </body>
 </html>
