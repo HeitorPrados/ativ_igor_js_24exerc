@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    while (true) {
+        let nome = prompt("Informe o nome do atleta (ou deixe em branco para sair):");
+        if (!nome) break;
+
+        let saltos = [];
+        for (let i = 1; i <= 5; i++) {
+            let salto = parseFloat(prompt(`Informe a distância do ${i}º salto (em metros):`));
+            saltos.push(salto);
+        }
+
+        let soma = 0;
+        for (let i = 0; i < saltos.length; i++) {
+            soma += saltos[i];
+        }
+        let media = (soma / saltos.length).toFixed(1);
+
+        alert(`Atleta: ${nome}
+        Primeiro Salto: ${saltos[0]} m
+        Segundo Salto: ${saltos[1]} m
+        Terceiro Salto: ${saltos[2]} m
+        Quarto Salto: ${saltos[3]} m
+        Quinto Salto: ${saltos[4]} m
+
+        Resultado final:
+        Atleta: ${nome}
+        Saltos: ${saltos.join(" - ")}
+        Média dos saltos: ${media} m`);
+    }
+    </script>
+</body>
+</html>

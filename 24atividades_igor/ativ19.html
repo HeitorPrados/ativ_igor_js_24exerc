@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let opcoes = [
+            "Windows Server",
+            "Unix",
+            "Linux",
+            "Netware",
+            "Mac OS",
+            "Outro"
+        ];
+
+        let votos = new Array(6).fill(0);
+        let totalVotos = 0;
+        let voto;
+
+        while (true) {
+            voto = parseInt(prompt("1-Windows Server \n2-Unix \n3-Linux \n4-Netware \n5-Mac OS \n6-Outro \nInforme seu voto (1-6) ou 0 para encerrar: "));
+
+            if (isNaN(voto)) {
+                alert("Entrada inválida! Por favor, insira um número.");
+                continue;
+            }
+
+            if (voto === 0) {
+                break;
+            }
+
+            if (voto < 1 || voto > 6) {
+                alert("Voto inválido! Insira um número entre 1 e 6.");
+                continue;
+            }
+
+            votos[voto - 1]++;
+            totalVotos++;
+        }
+
+        if (totalVotos === 0) {
+            alert("Nenhum voto foi registrado.");
+        } else {
+            let resultado = "Sistema Operacional   Votos   %\n";
+            resultado += "-------------------   -----   ---\n";
+
+            let vencedor = "";
+            let maxVotos = 0;
+
+            for (let i = 0; i < opcoes.length; i++) {
+                let percentual = ((votos[i] / totalVotos) * 100).toFixed(2);
+                resultado += `${opcoes[i].padEnd(18)}   ${votos[i].toString().padEnd(5)}   ${percentual}%\n`;
+
+                if (votos[i] > maxVotos) {
+                    maxVotos = votos[i];
+                    vencedor = opcoes[i];
+                }
+            }
+
+            resultado += "-------------------   -----\n";
+            resultado += `Total de votos: ${totalVotos}\n`;
+            resultado += `O Sistema Operacional mais votado foi o ${vencedor}, com ${maxVotos} votos, correspondendo a ${(maxVotos / totalVotos * 100).toFixed(2)}% dos votos.`;
+
+            alert(resultado);
+        }
+    </script>
+</body>
+</html>

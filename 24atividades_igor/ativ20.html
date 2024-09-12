@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let salarios = [];
+        let abonos = [];
+        let salario;
+        let totalAbonos = 0;
+        let totalColaboradores = 0;
+        let colaboradoresMinimo = 0;
+        let maiorAbono = 0;
+
+        while (true) {
+            salario = parseFloat(prompt("Digite o salário (ou 0 para encerrar):"));
+            
+            if (salario === 0) {
+                break;
+            }
+
+            salarios.push(salario);
+            totalColaboradores++;
+        }
+
+        let resultado = "Projeção de Gastos com Abono\n============================\n";
+
+        salarios.forEach(salario => {
+            let abono = salario * 0.2;
+            if (abono < 100) {
+                abono = 100;
+                colaboradoresMinimo++;
+            }
+            abonos.push(abono);
+            totalAbonos += abono;
+            if (abono > maiorAbono) {
+                maiorAbono = abono;
+            }
+        });
+
+        resultado += "Salário - Abono\n";
+        for (let i = 0; i < salarios.length; i++) {
+            resultado += `R$ ${salarios[i].toFixed(2)} - R$ ${abonos[i].toFixed(2)}\n`;
+        }
+
+        resultado += `\nForam processados ${totalColaboradores} colaboradores\n`;
+        resultado += `Total gasto com abonos: R$ ${totalAbonos.toFixed(2)}\n`;
+        resultado += `Valor mínimo pago a ${colaboradoresMinimo} colaboradores\n`;
+        resultado += `Maior valor de abono pago: R$ ${maiorAbono.toFixed(2)}\n`;
+
+        alert(resultado);
+    </script>
+</body>
+</html>

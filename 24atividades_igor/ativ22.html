@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let totalMouses = 0;
+        let defeitos = {
+        "1": { descricao: "necessita da esfera", quantidade: 0 },
+        "2": { descricao: "necessita de limpeza", quantidade: 0 },
+        "3": { descricao: "necessita troca do cabo ou conector", quantidade: 0 },
+        "4": { descricao: "quebrado ou inutilizado", quantidade: 0 },
+        };
+
+        while (true) {
+        let idMouse = parseInt(prompt("Informe o número de identificação do mouse (0 para encerrar):"));
+
+        if (idMouse === 0) break;
+
+        let tipoDefeito = prompt("Informe o tipo de defeito (1-necessita da esfera, 2-necessita de limpeza, 3-necessita troca do cabo ou conector, 4-quebrado ou inutilizado):");
+
+        if (defeitos[tipoDefeito]) {
+            defeitos[tipoDefeito].quantidade++;
+            totalMouses++;
+        } else {
+            alert("Tipo de defeito inválido. Tente novamente.");
+        }
+        }
+
+        let mensagem = `Quantidade de mouses: ${totalMouses}\nSituação\tQuantidade\tPercentual\n`;
+
+        for (let tipo in defeitos) {
+        let percentual = (defeitos[tipo].quantidade / totalMouses) * 100 || 0; // o (ou 0) foi utilizado para evitar voltar NaN caso o totalMouses for igual a 0.
+        mensagem += `${tipo} - ${defeitos[tipo].descricao}\t${defeitos[tipo].quantidade}\t${percentual.toFixed(2)}%\n`; // o \t adiciona um espaço(fica tipo uma seta) no estilo do tab, serve para deixar o texto mais organizado.
+        }
+
+        alert(mensagem);
+    </script>
+</body>
+</html>

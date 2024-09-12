@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let votos = new Array(24).fill(0);
+        let totalVotos = 0;
+
+        alert("Enquete: Quem foi o melhor jogador?");
+        while (true) {
+            let numero = parseInt(prompt("Número do jogador (0=fim): "));
+
+            if (numero === 0) {
+                break;
+            }
+
+            if (numero >= 1 && numero <= 23) {
+                votos[numero]++;
+                totalVotos++;
+            } else {
+                alert("Informe um valor entre 1 e 23 ou 0 para sair!");
+            }
+        }
+
+        if (totalVotos > 0) {
+            let resultado = "\nResultado da votação:\n";
+            resultado += `Foram computados ${totalVotos} votos.\n\n`;
+            resultado += "Jogador - Votos - %\n";
+
+            let melhorJogador = 0;
+            let maisVotos = 0;
+
+            for (let i = 1; i <= 23; i++) {
+                if (votos[i] > 0) {
+                    let percentual = (votos[i] / totalVotos * 100).toFixed(1);
+                    resultado += `${i} - ${votos[i]} - ${percentual}%\n`;
+
+                    if (votos[i] > maisVotos) {
+                        melhorJogador = i;
+                        maisVotos = votos[i];
+                    }
+                }
+            }
+
+            let percentualMelhorJogador = (maisVotos / totalVotos * 100).toFixed(1);
+            resultado += `\nO melhor jogador foi o número ${melhorJogador}, com ${maisVotos} votos, correspondendo a ${percentualMelhorJogador}% do total de votos.`;
+
+            alert(resultado);
+        } else {
+            alert("Nenhum voto foi computado.");
+        }
+    </script>
+</body>
+</html>

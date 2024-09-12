@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let carros = [
+            { nome: 'palio', kmPorLitro: 8 },
+            { nome: 'civic', kmPorLitro: 11 },
+            { nome: 'corolla', kmPorLitro: 13 },
+            { nome: 'ka', kmPorLitro: 9.5 },
+            { nome: 'hb20', kmPorLitro: 15 }
+        ];
+
+        let precoGasolina = 2.25;
+        let distancia = 1000;
+
+        let maisEconomico = carros[0]; // esse [0] já assume previamente o carro 0 (palio) como mais econômico para depois comparar aos demais.
+
+        for (let i = 1; i < carros.length; i++) {
+            if (carros[i].kmPorLitro > maisEconomico.kmPorLitro) {
+                maisEconomico = carros[i];
+            }
+        }
+
+        let mensagem = 'Comparativo de Consumo de Combustível\n\n';
+
+        for (let i = 0; i < carros.length; i++) {
+            let consumo = distancia / carros[i].kmPorLitro;
+            let custo = consumo * precoGasolina;
+            mensagem += `${i + 1} - ${carros[i].nome} - ${carros[i].kmPorLitro.toFixed(1)} - ${consumo.toFixed(1)} litros - R$ ${custo.toFixed(2)}\n`;
+        }
+
+        mensagem += `\nO menor consumo é do ${maisEconomico.nome}.`;
+
+        alert(mensagem);
+    </script>
+</body>
+</html>

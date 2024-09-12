@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function converterBytesParaMegabytes(bytes) {
+        return bytes / (1024 * 1024);
+        }
+
+        function calcularPercentualDeUso(espacoUtilizado, espacoTotal) {
+        return (espacoUtilizado / espacoTotal) * 100;
+        }
+
+        let usuarios = [
+        { nome: 'joana', espaco: 784596321 },
+        { nome: 'maria', espaco: 245789632 },
+        { nome: 'pedro', espaco: 654789123 },
+        { nome: 'juliana', espaco: 987456321 },
+        { nome: 'marcos', espaco: 123456789 },
+        { nome: 'fernando', espaco: 112345678 }
+        ];
+
+        let espacoTotal = 0;
+        usuarios.forEach(usuario => {
+        usuario.espacoMB = converterBytesParaMegabytes(usuario.espaco);
+        espacoTotal += usuario.espacoMB;
+        });
+
+        usuarios.forEach(usuario => {
+        usuario.percentualUso = calcularPercentualDeUso(usuario.espacoMB, espacoTotal);
+        });
+
+        let espacoMedio = espacoTotal / usuarios.length;
+
+        let relatorio = `ACME Inc.               Uso do espaço em disco pelos usuários\n`;
+        relatorio += `------------------------------------------------------------------------\n`;
+        relatorio += `Nr.  Usuário            Espaço utilizado     % do uso\n`;
+
+        usuarios.forEach((usuario, index) => {
+        relatorio += `${index + 1}    ${usuario.nome.padEnd(15)} ${usuario.espacoMB.toFixed(2)} MB            ${usuario.percentualUso.toFixed(2)}%\n`;
+        });
+
+        relatorio += `\nEspaço total ocupado: ${espacoTotal.toFixed(2)} MB\n`;
+        relatorio += `Espaço médio ocupado: ${espacoMedio.toFixed(2)} MB\n`;
+
+        alert(relatorio);
+    </script>
+</body>
+</html>
